@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<origin>
+	<file name="msys+7za+wget+svn+git+mercurial+cvs-rev13.7z" 
+	      source="http://sourceforge.net/projects/mingwbuilds/files/external-binary-packages/" 
+	/>
+	<file name="x86_64-4.9.1-release-posix-seh-rt_v3-rev0.7z" 
+	      source="http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/4.9.1/threads-posix/seh/"
+	/>
+</origin>
