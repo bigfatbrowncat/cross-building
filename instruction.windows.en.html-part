@@ -2,33 +2,34 @@
 <p>Here we describe how to prepare all the tools that are necessary to make
 crossplatform applications on Windows 7 or newer and architectures x86 or x86_64.</p>
 <h3>1. Downloading MinGW and MSYS</h3>
-<p>Операционная система Windows несовместима со стандартом POSIX, поэтому напрямую работать в ней с <code>make</code> и <code>gcc</code> затруднительно. К счастью, эта проблема решена с помощью двух замечательных продуктов &#151; MinGW и MSYS.
+<p>Windows operating system is incompatible with POSIX standard, so using <code>make</code> and <code>gcc</code> in it is complicated. Fortunately this issue could be solved using two wonderful products: MinGW and MSYS.
 <ul>
-	<li>MinGW (а точнее &#151; mingw-w64) &#151; набор компиляторов GNU и связанных утилит, то есть gcc, gdb, ld и т. д... Всё, к чему привыкли разработчики под Unix-системами</li>
-	<li>MSYS &#151; системные утилиты Unix, портированные на Win32. В первую очередь это shell. Кроме того, присутствуют make, find и прочие простейшие утилиты командной строки, что делает возможным использование универсальных (или почти универсальных) Makefile-ов между Windows и Unix-системами.</li>
+	<li>MinGW (more specifically &#151; mingw-w64) &#151; GNU compiler collection and some additional utils including gdb, ld and so on... Every basic tool which Unix developers are used to.</li>
+	<li>MSYS &#151; basic Unix tools, ported on Win32. At first it includes <code>sh</code>. Additionally there are <code>make</code>, <code>find</code> and other simple command line tools that make possible to create universal (or nearly universal) Makefiles for Windows and Unix-like systems.</li>
 </ul>
-Помимо перечисленного, необходима также сборка git, работающая под Windows</p>
-<p>Разработка и поддержка перечисленных утилит производится большим сообществом разработчиков, что, к сожалению, приводит к появлению множества чуть-чуть различающихся сборок. Автором была экспериментально найден комплект сборок, который хорошо работает. Он состоит из довольно свежего gcc (4.9.1) и все утилиты зарекомендовали себя как надежные. Забрать его можно, скачав 2 файла:</p>
+In addition to all the things listed above we need <code>git</code> build that could be used on Windows</p>
+<p>All these tools are developed and maintained by a huge developer community, which, alas, implies many different builds from different maintainers. The author of this instruction has found a set of builds that works well. It consists of a quite fresh <code>gcc</code> version (4.9.1) and all the other utilities have proved themselves to be reliable.</p>
 <ul>
-	<li><a href="https://github.com/bigfatbrowncat/cross-building/blob/master/windows/files/msys%2B7za%2Bwget%2Bsvn%2Bgit%2Bmercurial%2Bcvs-rev13.7z?raw=true">msys+7za+wget+svn+git+mercurial+cvs-rev13.7z</a> &#151; это MSYS</li>
-	<li><a href="https://github.com/bigfatbrowncat/cross-building/blob/master/windows/files/x86_64-4.9.1-release-posix-seh-rt_v3-rev0.7z?raw=true">x86_64-4.9.1-release-posix-seh-rt_v3-rev0.7z</a> &#151; это MinGW с 64-битными компиляторами</li>
+	<li><a href="https://github.com/bigfatbrowncat/cross-building/blob/master/windows/files/msys%2B7za%2Bwget%2Bsvn%2Bgit%2Bmercurial%2Bcvs-rev13.7z?raw=true">msys+7za+wget+svn+git+mercurial+cvs-rev13.7z</a> &#151; this is MSYS</li>
+	<li><a href="https://github.com/bigfatbrowncat/cross-building/blob/master/windows/files/x86_64-4.9.1-release-posix-seh-rt_v3-rev0.7z?raw=true">x86_64-4.9.1-release-posix-seh-rt_v3-rev0.7z</a> &#151; this is MinGW with 64-bit toolchain</li>
 </ul>
-<p>Для распаковки архивов, нам потребуется разархиватор <a href="http://www.7-zip.org/">7zip</a> (возможно, у вас есть WinRAR &#151; он тоже справится с этой задачей).</p>
+<p>In order to unpack both archives we need <a href="http://www.7-zip.org/">7zip</a> (if you have WinRAR installed &#151; it's capable of doing that as well).</p>
 
-<h3>2. Распаковка</h3>
-<p>Создайте директорию <code>C:\mingw</code>. На самом деле, не обязательно, чтобы она была именно на диске C: Главное &#151; чтобы в пути не было пробелов. То есть <code>C:\Program Files\mingw</code> <emph>не подойдет!</emph></p>
-<p>В архиве с MSYS присутствует папка <code>msys</code>. Она должна стать <code>C:\mingw\msys</code>. В архиве с MinGW есть папка <code>mingw64</code>. Она должна стать <code>C:\mingw\mingw64</code>.
+<h3>2. Decompression</h3>
+<p>Create a directory named <code>C:\mingw</code>. Actually you don't have to create it exactly in the root of C: but you have to avoid any spaces in its name, so <code>C:\Program Files\mingw</code> <emph>will not work!</emph></p>
+<p>In MSIS archive you'll find <code>msys</code> folder. It should become <code>C:\mingw\msys</code>. In MinGW archive you'll find <code>mingw64</code> folder. It should become <code>C:\mingw\mingw64</code>. 
 
-<h3>3. Настройка</h3>
-<p>Для того, чтобы связать MinGW и MSYS между собой, необходимо указать путь к MinGW в настройках MSYS. Конкретнее, зайдите в ваш любимый текстовый редактор (я использую <a href="http://http://notepad-plus-plus.org/">Notepad++</a>) и создайте там файл следующего содержания:
+<h3>3. Configuration</h3>
+<p>In order to connect MinGW and MSYS together, you should put the MinGW path into an MSYS configuration file. Specifically, you should open
+your favorite text editor (I prefer <a href="http://http://notepad-plus-plus.org/">Notepad++</a>) and create a file there. Write down this:
 <pre><code>C:\mingw\mingw64		/mingw</code></pre>
-Сохраните этот файл под именем <code>C:\mingw\msys\etc\fstab</code>.</p>
-<p>Так как среда MSYS сама по себе является 32-битной, многие сборочные скрипты будут ошибочно считать, что собирать требуется 32-битные исполняемые файлы (что не умеют делать 64-битные компиляторы MinGW). Поэтому желательно прописать в <code>C:\mingw\msys\etc\profile</code> строку
+Save this file as <code>C:\mingw\msys\etc\fstab</code>.</p>
+<p>Since MSYS itself is 32-bit architecture, some building scripts would be fooled to build 32-bit binary versions (but they couldn't do that with 64-bit MinGW compilers). So it's highly recommended to put a line
 <pre><code>export ARCH=x86_64</code></pre>
-Просто откройте файл profile, допишите эту строку в конец и сохраните.</p>
+into <code>C:\mingw\msys\etc\profile</code> configuration file. Just open this file in a text editor add the line to the bottom and save it.</p>
 
-<h3>4. Проверка и использование</h3>
-<p>Для того, чтобы использовать все развёрнутые утилиты, необходимо запустить консоль MSYS с помощью bat-файла <code>C:\mingw\msys\msys.bat</code>. Откроем ее и убедимся в том, что всё работает. Введем в запущенной консоли команду <code>gcc</code>.</p>
+<h3>4. Testing and usage</h3>
+<p>To use all the installed tools, you should run MSYS terminal window. It's made by launching the <code>C:\mingw\msys\msys.bat</code> file.  Let's open it and ensure that everything is working fine. Enter <code>gcc</code> command there.</p>
 <pre><code>user@machine ~
 $ gcc
 gcc.exe: fatal error: no input files
@@ -37,10 +38,11 @@ compilation terminated.
 user@machine ~
 $ _
 </code></pre>
-<p>Увидев такую ошибку, возрадуемся. gcc найден и сообщает нам, что ему не передали входной файл. Но сам факт того, что он найден означает, что файл fstab успешно подцеплен и связь между MinGW и MSYS установлена.</p>
+<p>This error message is good news. It means <code>gcc</code> is found, but it complains for absence of source files. But for us the fact that it's found means that <code>fstab</code> is parsed well and the connection between MSYS and MinGW is established successfully.</p>
 
-<h3>5. Пара замечаний</h3>
+<h3>5. A couple of remarks</h3>
 <ol>
-	<li>Домашняя папка MSYS не соответствует домашней папке пользователя Windows. В каком-то смысле это даже хорошо &#151; ваши MinGW-проекты будут лежать отдельно и вы будете знать, что доступ к ним желательно осуществлять через консоль MSYS.</li>
-	<li>При использовании каких-либо GUI-приложений (например, IDE) при разработке, запускайте их из командной строки MSYS, чтобы они получили правильную командную среду. За пределами консоли MSYS никто не знает, где находятся утилиты из MinGW.</li>
+	<li>MSYS home directory isn't the same as your Windows home directory. In some sense it could be even considered an advantage cause your
+	user folder data isn't messed up with your MSYS projects that should be accessed only thru MSYS terminal.</li>
+	<li>If you want to use any GUI applications (an IDE, for instance) for development, you should launch them from MSYS terminal command line thus they would derive correct environment configuration. Out of your MSYS environment no one knows where MinGW tools are located</li>
 </ol>
