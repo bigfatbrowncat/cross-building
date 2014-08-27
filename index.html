@@ -25,22 +25,26 @@
 		    document.getElementById("id_lang_ru").className = "toggle_button_active right";
 
 			loadHTMLPart('id_instruction', 'instruction.ru.html-part');
+			loadHTMLPart('id_instruction_title', 'instruction-title.ru.html-part');
 		  }
 		  function selectEnglish() {
 		    document.getElementById("id_lang_en").className = "toggle_button_active left";
 		    document.getElementById("id_lang_ru").className = "toggle_button right";
 
 			loadHTMLPart('id_instruction', 'instruction.en.html-part');
+			loadHTMLPart('id_instruction_title', 'instruction-title.en.html-part');
 		  }
 		</script>
 	  </div>
 	</div>
     <section>
-		<h1>Инструкция по настройке окружения от bigfatbrowncat</h1>
-		<p>Данная инструкция предназначена для разработки простых кроссплатформенных приложений под Windows, Linux и OS X. Она является результатом нескольких лет практики автора в его собственных проектах, поэтому если вы хотите использовать (или просто скомпилировать) один из них, вам следует начать с настройки окружения согласно этой инструкции.</p>
+		<div style="width: 100%" id="id_instruction_title"></div>
+		<script>
+			loadHTMLPart('id_instruction_title', 'instruction-title.ru.html-part');
+		</script>
 		<div style="width: 100%" id="id_instruction"></div>
 		<script>
-			loadHTMLPart('id_instruction', 'id_instruction_spinner', 'instruction.ru.html-part');
+			loadHTMLPart('id_instruction', 'instruction.ru.html-part');
 		</script>
 
     </section>
