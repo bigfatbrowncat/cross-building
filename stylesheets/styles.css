@@ -158,9 +158,10 @@ header ul a strong {
 }
 
 section {
-  width:500px;
-  float:right;
-  padding-bottom:50px;
+  width: 780px;
+  margin: auto;
+  margin-top: 10pt;
+  margin-bottom: 10pt;
 }
 
 small {
@@ -181,12 +182,51 @@ footer {
   bottom:50px;
 }
 
-@media print, screen and (max-width: 960px) {
+.toggle_buttons_panel {
+  border: 1px solid #88bbff;
+  padding: 3px 0px;
+  font-size: 85%;
+  margin: 10pt;
+  border-radius: 4pt;
+  text-align: center;
+    margin: 10pt;
+
+  display: inline
   
-  div.wrapper {
-    width:auto;
-    margin:0;
-  }
+}
+
+.toggle_button {
+  color: #66aaee;
+  padding: 3px 8px;
+  display: inline;
+  margin: 0;
+  cursor: pointer;
+}
+.toggle_button:hover {
+  color: #5599dd;
+  background: #eef0ff;
+}
+
+.left {
+  border-top-left-radius: 3pt;
+  border-bottom-left-radius: 3pt;
+}
+.right {
+  border-top-right-radius: 3pt;
+  border-bottom-right-radius: 3pt;
+}
+
+.toggle_button_active {
+  color: #66b0ee;
+  padding: 3px 8px;
+  display: inline;
+  margin: 0;
+  cursor: default;
+  background: #88bbff;
+  color: white;
+}
+
+@media print, screen and (max-width: 960px) {
   
   header, section, footer {
     float:none;
@@ -196,13 +236,6 @@ footer {
   
   header {
     padding-right:320px;
-  }
-  
-  section {
-    border:1px solid #e5e5e5;
-    border-width:1px 0;
-    padding:20px 0;
-    margin:0 0 20px;
   }
   
   header a small {
