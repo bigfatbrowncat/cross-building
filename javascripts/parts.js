@@ -1,4 +1,4 @@
-function loadHTMLPart(targetId, address, errorText) {
+function loadHTMLPart(targetId, address) {
     var xmlhttp;
 
     if (window.XMLHttpRequest) {
@@ -15,7 +15,7 @@ function loadHTMLPart(targetId, address, errorText) {
                document.getElementById(targetId).innerHTML = xmlhttp.responseText;
            }
            else {
-               document.getElementById(targetId).innerHTML = errorText;
+               document.getElementById(targetId).innerHTML = "Error " + xmlhttp.status;
            }
         }
     }
