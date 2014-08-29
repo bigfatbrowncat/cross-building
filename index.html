@@ -5,19 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>cross-building toolkit by bigfatbrowncat</title>
 
+	<!--[if lt IE 9]>
+    <script src="javascripts/html5shiv.js"></script>
+    <![endif]-->
+	
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <script src="javascripts/parts.js"></script>
     <script src="javascripts/spin.js"></script>
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+
   </head>
   <body>
     <script>
-	  var lang = 'ru';
+	
+	  var lang;
+	  if (window.navigator.language.search("ru") > -1 || navigator.language.search("ru") > -1) {
+	    lang = 'ru';
+	  } else {
+	    lang = 'en';
+	  }
+	  
 	  var os = 'windows';
 	  
 	  function loadInstructionTitle() {
@@ -28,90 +37,88 @@
 	    loadHTMLPart('id_instruction', 'instruction.' + os + '.' + lang + '.html-part');
 	  }
 	</script>
-	<div style="text-align: right; width: 100%;">
-	  <div class="toggle_buttons_panel">
-	    <div id="id_lang_en" class="toggle_button left" onclick="selectEnglish()">English</div><div id="id_lang_ru" class="toggle_button_active right" onclick="selectRussian()">Русский</div>
-		<script>
-		  function selectRussian() {
-		    document.getElementById("id_lang_en").className = "toggle_button left";
-		    document.getElementById("id_lang_ru").className = "toggle_button_active right";
+	<section>
+		<div style="text-align: right; width: 100%;">
+		  <div class="toggle_buttons_panel">
+			<div id="id_lang_en" class="toggle_button left" onclick="selectEnglish()">English</div><div id="id_lang_ru" class="toggle_button_active right" onclick="selectRussian()">Русский</div>
+			<script>
+			  function selectRussian() {
+				document.getElementById("id_lang_en").className = "toggle_button left";
+				document.getElementById("id_lang_ru").className = "toggle_button_active right";
 
-			lang="ru";
-			
-			loadInstructionTitle();
-			loadInstruction();
-		  }
-		  function selectEnglish() {
-		    document.getElementById("id_lang_en").className = "toggle_button_active left";
-		    document.getElementById("id_lang_ru").className = "toggle_button right";
+				lang="ru";
+				
+				loadInstructionTitle();
+				loadInstruction();
+			  }
+			  function selectEnglish() {
+				document.getElementById("id_lang_en").className = "toggle_button_active left";
+				document.getElementById("id_lang_ru").className = "toggle_button right";
 
-			lang="en";
-			
-			loadInstructionTitle();
-			loadInstruction();
-		  }
-		</script>
-	  </div>
-	</div>
-    <section>
+				lang="en";
+				
+				loadInstructionTitle();
+				loadInstruction();
+			  }
+			</script>
+		  </div>
+		</div>
 		<div style="width: 100%" id="id_instruction_title"></div>
 		<script>
 			loadInstructionTitle();
 		</script>
-	</section>
-	<div style="text-align: right; width: 100%;">
-	  <div class="toggle_buttons_panel">
-	    <div id="id_os_win" class="toggle_button_active left" onclick="selectWindows()">Windows</div><div id="id_os_osx" class="toggle_button" onclick="selectOSX()">OS X</div><div id="id_os_linux" class="toggle_button right" onclick="selectLinux()">Linux</div>
-		<script>
-		  function selectWindows() {
-		    document.getElementById("id_os_win").className = "toggle_button_active left";
-		    document.getElementById("id_os_osx").className = "toggle_button";
-		    document.getElementById("id_os_linux").className = "toggle_button right";
-			
-			os="windows";
-			
-			loadInstruction();
-		  }
+		<div style="text-align: right; width: 100%;">
+		  <div class="toggle_buttons_panel">
+			<div id="id_os_win" class="toggle_button_active left" onclick="selectWindows()">Windows</div><div id="id_os_osx" class="toggle_button" onclick="selectOSX()">OS X</div><div id="id_os_linux" class="toggle_button right" onclick="selectLinux()">Linux</div>
+			<script>
+			  function selectWindows() {
+				document.getElementById("id_os_win").className = "toggle_button_active left";
+				document.getElementById("id_os_osx").className = "toggle_button";
+				document.getElementById("id_os_linux").className = "toggle_button right";
+				
+				os="windows";
+				
+				loadInstruction();
+			  }
 
-		  function selectOSX() {
-		    document.getElementById("id_os_win").className = "toggle_button left";
-		    document.getElementById("id_os_osx").className = "toggle_button_active";
-		    document.getElementById("id_os_linux").className = "toggle_button right";
+			  function selectOSX() {
+				document.getElementById("id_os_win").className = "toggle_button left";
+				document.getElementById("id_os_osx").className = "toggle_button_active";
+				document.getElementById("id_os_linux").className = "toggle_button right";
 
-			os="osx";
-			
-			loadInstruction();
-		  }
+				os="osx";
+				
+				loadInstruction();
+			  }
 
-		  function selectLinux() {
-		    document.getElementById("id_os_win").className = "toggle_button left";
-		    document.getElementById("id_os_osx").className = "toggle_button";
-		    document.getElementById("id_os_linux").className = "toggle_button_active right";
+			  function selectLinux() {
+				document.getElementById("id_os_win").className = "toggle_button left";
+				document.getElementById("id_os_osx").className = "toggle_button";
+				document.getElementById("id_os_linux").className = "toggle_button_active right";
 
-			os="linux";
-			
-			loadInstruction();
-		  }
-		</script>
-	  </div>
-	</div>
-	<section>
+				os="linux";
+				
+				loadInstruction();
+			  }
+			</script>
+		  </div>
+		</div>
 		<div style="width: 100%" id="id_instruction"></div>
 		<script>
 			loadInstruction();
 		</script>
-    </section>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-33475176-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
+	</section>
+	<script src="javascripts/scale.fix.js"></script>
+		  <script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+		  var pageTracker = _gat._getTracker("UA-33475176-1");
+		pageTracker._trackPageview();
+		} catch(err) {}
+	</script>
 
   </body>
 </html>
