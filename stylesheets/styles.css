@@ -2,6 +2,7 @@ body {
   padding:50px;
   font:14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#777;
+  min-width: 200pt;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -181,6 +182,12 @@ footer {
   bottom:50px;
 }
 
+.toggle_buttons_block {
+  text-align: right; 
+  width: 100%; 
+  margin: 5pt 0;
+}
+
 .toggle_buttons_panel {
   border: 1px solid #88bbff;
   padding: 3px 0px;
@@ -188,7 +195,7 @@ footer {
   margin: 10pt;
   border-radius: 4pt;
   text-align: center;
-    margin: 10pt;
+  margin: 10pt;
 
   display: inline
   
