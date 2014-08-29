@@ -194,10 +194,7 @@ footer {
   font-size: 85%;
   border-radius: 4pt;
   text-align: center;
-  margin: 10pt;
-
-  display: inline
-  
+  display: inline;
 }
 
 .toggle_button {
