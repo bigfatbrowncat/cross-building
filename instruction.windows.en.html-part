@@ -1,4 +1,4 @@
-<h2>Building of crossplatform applications on Windows</h2>
+<h2>Building crossplatform applications on Windows</h2>
 <p>Here we describe how to prepare all the tools that are necessary to make
 crossplatform applications on Windows 7 or newer and architectures x86 or x86_64.</p>
 <h3>1. Downloading MinGW and MSYS</h3>

@@ -1,0 +1,4 @@
+<h2>Building crossplatform applications on OS X</h2>
+<p>In order to build applications on OS X we need command line developer tools. You need an Apple account to download them.</p>
+<p>Open <a href="https://developer.apple.com/downloads/">Apple's Developer site</a>. Log in (or register if you haven't done that already). There you'll find a long list, containing, among the others, something like <b>Command Line Tools (OS X 10.9) for Xcode - Late August 2014</b>. Select the suitable item for your OS version (I have OS X 10.9). Download the image, mount and install the utils.</p>
+<p>Apple's command line tools include almost everything we need, even <code>git</code></p>
