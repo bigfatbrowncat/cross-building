@@ -16,7 +16,7 @@
     <script src="javascripts/parts.js"></script>
     <script src="javascripts/spin.js"></script>
 
-    <script>
+    <script type="text/javascript">
 	
 	  var lang = 'en';
 	  var os = 'windows';
@@ -87,7 +87,7 @@
 	  }
 	</script>
   </head>
-  <body onload="initializeLanguage()">
+  <body>
 	<section>
 		<div style="text-align: right; width: 100%;">
 		  <div class="toggle_buttons_panel">
@@ -115,4 +115,8 @@
 	</script>
 
   </body>
+  <script type="text/javascript">
+	window.onload = initializeLanguage();
+  </script>
+
 </html>
