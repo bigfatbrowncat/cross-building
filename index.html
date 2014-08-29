@@ -80,7 +80,7 @@
 	  
 	  function initializeLanguage() {
 	 	if ((window.navigator.language != undefined && window.navigator.language.search("ru") > -1) || 
-		    (navigator.language != undefined && navigator.language.search("ru") > -1)) {
+		    (navigator.userLanguage != undefined && navigator.language.search("ru") > -1)) {
 		  selectRussian();
 		} else {
 		  selectEnglish();
@@ -88,7 +88,7 @@
 	  }
 	</script>
   </head>
-  <body>
+  <body onload="initializeLanguage()">
 	<section>
 		<div style="text-align: right; width: 100%;">
 		  <div class="toggle_buttons_panel">
@@ -116,8 +116,4 @@
 	</script>
 
   </body>
-  <script type="text/javascript">
-	window.onload = initializeLanguage();
-  </script>
-
 </html>
